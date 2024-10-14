@@ -53,8 +53,6 @@ export default function SignUpPage() {
   const api = useApi();
   const onSubmit = async (data: z.infer<typeof signUpFormSchema>) => {
     console.log(data);
-    console.log(await api.get("/"));
-    console.log("done");
   };
 
   return (
