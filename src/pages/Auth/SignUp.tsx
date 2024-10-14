@@ -8,6 +8,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useApi } from "@/hooks/useApi";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
@@ -49,8 +50,10 @@ export default function SignUpPage() {
   });
   const { control, handleSubmit } = form;
 
-  const onSubmit = (data: z.infer<typeof signUpFormSchema>) => {
+  const api = useApi();
+  const onSubmit = async (data: z.infer<typeof signUpFormSchema>) => {
     console.log(data);
+    await api.get("/");
   };
 
   return (
