@@ -46,7 +46,7 @@ export default function SignInPage() {
       {/* Left side with image */}
       <div className="hidden md:block w-1/2 h-screen">
         <img
-          src="https://images.unsplash.com/photo-1513477967668-2aaf11838bd6?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          src="https://images.unsplash.com/photo-1513477967668-2aaf11838bd6?w=800&h=600&q=80&fm=auto&fit=fillD"
           alt="Image"
           className="object-cover h-full w-full"
         />
