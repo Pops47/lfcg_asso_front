@@ -9,7 +9,7 @@ RUN npm install
 COPY . .
 
 ARG URL_BACK
-ENV VITE_BACK_URL=${URL_BACK:-"http://localhost:3000"}
+ENV VITE_BACK_URL=${URL_BACK:-http://localhost:3000}
 
 RUN npm run build
 
