@@ -57,7 +57,7 @@ export default function SignUpPage() {
     console.log(data);
     try {
       await api.post("/users", { email: data.email, password: data.password });
-      navigate("/login");
+      navigate("/signin");
     } catch (error) {
       console.log("🚀 ~ onSubmit ~ error:", error);
     }
