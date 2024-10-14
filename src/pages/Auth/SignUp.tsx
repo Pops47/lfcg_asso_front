@@ -8,9 +8,10 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useApi } from "@/hooks/useApi";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import z from "zod";
 
 const signUpFormSchema = z
@@ -38,6 +39,7 @@ const signUpFormSchema = z
   });
 
 export default function SignUpPage() {
+  const navigate = useNavigate();
   const form = useForm<z.infer<typeof signUpFormSchema>>({
     resolver: zodResolver(signUpFormSchema),
     defaultValues: {
@@ -49,8 +51,16 @@ export default function SignUpPage() {
   });
   const { control, handleSubmit } = form;
 
+  const api = useApi();
+
   const onSubmit = async (data: z.infer<typeof signUpFormSchema>) => {
     console.log(data);
+    try {
+      await api.post("/users", { email: data.email, password: data.password });
+      navigate("/login");
+    } catch (error) {
+      console.log("🚀 ~ onSubmit ~ error:", error);
+    }
   };
 
   return (

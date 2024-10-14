@@ -37,9 +37,7 @@ export default function SignInPage() {
   });
   const { control, handleSubmit } = form;
 
-  const onSubmit = (data: z.infer<typeof signInFormSchema>) => {
-    console.log(data);
-  };
+  const onSubmit = (data: z.infer<typeof signInFormSchema>) => {};
 
   return (
     <div className="min-h-screen flex bg-gray-100 w-full">
