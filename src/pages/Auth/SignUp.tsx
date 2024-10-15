@@ -52,7 +52,7 @@ export default function SignUpPage() {
 
   const onSubmit = async (data: z.infer<typeof signUpFormSchema>) => {
     console.log(data);
-    const result = await axios.get("http://devpops.fr:3000/");
+    const result = await axios.get("https://devpops.fr:3000/");
     console.log("🚀 ~ onSubmit ~ result:", result);
   };
 
