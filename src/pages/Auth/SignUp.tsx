@@ -11,7 +11,7 @@ import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import z from "zod";
 
 const signUpFormSchema = z
@@ -39,7 +39,6 @@ const signUpFormSchema = z
   });
 
 export default function SignUpPage() {
-  const navigate = useNavigate();
   const form = useForm<z.infer<typeof signUpFormSchema>>({
     resolver: zodResolver(signUpFormSchema),
     defaultValues: {
