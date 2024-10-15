@@ -8,8 +8,8 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useApi } from "@/hooks/useApi";
 import { zodResolver } from "@hookform/resolvers/zod";
+import axios from "axios";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import z from "zod";
@@ -51,12 +51,11 @@ export default function SignUpPage() {
   });
   const { control, handleSubmit } = form;
 
-  const api = useApi();
-
   const onSubmit = async (data: z.infer<typeof signUpFormSchema>) => {
     console.log(data);
     try {
-      await api.post("/users", { email: data.email, password: data.password });
+      const result = await axios.get("http://devpops.fr:3000/");
+      console.log("🚀 ~ onSubmit ~ result:", result);
       navigate("/signin");
     } catch (error) {
       console.log("🚀 ~ onSubmit ~ error:", error);
