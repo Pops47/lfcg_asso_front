@@ -26,7 +26,7 @@ const signInFormSchema = z.object({
     }),
 });
 
-export default function SignInPage() {
+export default async function SignInPage() {
   const form = useForm<z.infer<typeof signInFormSchema>>({
     resolver: zodResolver(signInFormSchema),
     defaultValues: {
@@ -37,8 +37,14 @@ export default function SignInPage() {
   });
   const { control, handleSubmit } = form;
 
-  const onSubmit = (data: z.infer<typeof signInFormSchema>) => {
+  const onSubmit = async (data: z.infer<typeof signInFormSchema>) => {
     console.log("🚀 ~ SignInPage ~ data:", data);
+
+    const result = await axios.post(
+      "https://managevent.devpops.fr/api/auth/signin",
+      data
+    );
+    console.log("🚀 ~ onSubmit ~ result:", result);
   };
 
   return (

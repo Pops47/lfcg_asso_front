@@ -52,7 +52,10 @@ export default function SignUpPage() {
 
   const onSubmit = async (data: z.infer<typeof signUpFormSchema>) => {
     console.log(data);
-    const result = await axios.get("https://managevent.devpops.fr/api/");
+    const result = await axios.post(
+      "https://managevent.devpops.fr/api/auth/signup",
+      data
+    );
     console.log("🚀 ~ onSubmit ~ result:", result);
   };
 
