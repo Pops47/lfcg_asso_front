@@ -27,7 +27,7 @@ const signInFormSchema = z.object({
     }),
 });
 
-export default async function SignInPage() {
+export default function SignInPage() {
   const form = useForm<z.infer<typeof signInFormSchema>>({
     resolver: zodResolver(signInFormSchema),
     defaultValues: {
@@ -46,6 +46,7 @@ export default async function SignInPage() {
       data
     );
     console.log("🚀 ~ onSubmit ~ result:", result);
+    alert("Vous êtes bien connectés. Dashboard en cours de construction");
   };
 
   return (
