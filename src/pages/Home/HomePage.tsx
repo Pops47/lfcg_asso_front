@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
 export default function HomePage() {
+  console.log(import.meta.env.VITE_BACK_URL);
   return (
     <div className="min-h-screen flex bg-gray-100 w-full">
       <main className="w-full relative">
