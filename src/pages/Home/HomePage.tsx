@@ -26,6 +26,7 @@ export default function HomePage() {
             LA plateforme de gestion des évenements qui facilite la
             communication avec les bénévoles et favorise l'engagement !
           </p>
+          <p>{import.meta.env.VITE_BACK_URL}</p>
           <div className="flex flex-col sm:flex-row gap-6">
             <Link to="/signin">
               <Button className="bg-teal-500 hover:bg-teal-600 font-bold py-6 px-6 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
