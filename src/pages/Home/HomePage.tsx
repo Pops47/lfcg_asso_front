@@ -2,17 +2,13 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
 export default function HomePage() {
-  console.log(import.meta.env.VITE_BACK_URL);
   return (
     <div className="min-h-screen flex bg-gray-100 w-full">
       <main className="w-full relative">
         <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=800&h=600&q=80&fm=auto&fit=fill')`,
-          }}
+          className="absolute inset-0 bg-cover bg-center bg-[url('/src/assets/images/lfcg-asso_img_homepage.webp')]"
           role="img"
-          aria-label="Image de fond représentant un événement"
+          aria-label="Image de fond colorée représentant les mains superposées de plusieurs personnes, comme celles d'une équipe de sport faisant son cri de ralliement"
         >
           <div className="absolute inset-0 bg-black opacity-50"></div>
         </div>
@@ -24,10 +20,10 @@ export default function HomePage() {
             Simplifiez vous l'asso !
           </h2>
           <p className="text-lg md:text-xl mb-8 md:mb-12 max-w-xl">
-            LA plateforme de gestion des évenements qui facilite la
-            communication avec les bénévoles et favorise l'engagement !
+            Gérez tous vos évenements et facilitez l'engagement de vos bénévoles
+            en toute simplicité !
           </p>
-          <p>{import.meta.env.VITE_BACK_URL}</p>
+
           <div className="flex flex-col sm:flex-row gap-6">
             <Link to="/signin">
               <Button className="bg-teal-500 hover:bg-teal-600 font-bold py-6 px-6 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">

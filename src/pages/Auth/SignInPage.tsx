@@ -1,3 +1,4 @@
+import SignInSignUpLeftImage from "@/components/custom/SignInSignUpLeftImage";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -8,26 +9,16 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useApi } from "@/hooks/useApi";
+import { signInFormSchema } from "@/schemas/auth/SignInFormSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import axios from "axios";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import z from "zod";
 
-const signInFormSchema = z.object({
-  email: z
-    .string({ required_error: "Veuillez entrer un email" })
-    .email({ message: "Email invalide" }),
-  password: z
-    .string({ required_error: "Veuillez entrer un mot de passe" })
-    .min(8, { message: "Le mot de passe doit faire au moins 8 caractères" })
-    .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])/, {
-      message:
-        "Le mot de passe doit contenir au moins une majuscule, une minuscule, un nombre et un caractère spécial (@$!%*?&)",
-    }),
-});
-
 export default function SignInPage() {
+  const api = useApi();
+
   const form = useForm<z.infer<typeof signInFormSchema>>({
     resolver: zodResolver(signInFormSchema),
     defaultValues: {
@@ -41,26 +32,14 @@ export default function SignInPage() {
   const onSubmit = async (data: z.infer<typeof signInFormSchema>) => {
     console.log("🚀 ~ SignInPage ~ data:", data);
 
-    const result = await axios.post(
-      "https://managevent.devpops.fr/api/auth/signin",
-      data
-    );
+    const result = await api.post("/auth/signin", data);
     console.log("🚀 ~ onSubmit ~ result:", result);
     alert("Vous êtes bien connectés. Dashboard en cours de construction");
   };
 
   return (
     <div className="min-h-screen flex bg-gray-100 w-full">
-      {/* Left side with image */}
-      <div className="hidden md:block w-1/2 h-screen">
-        <img
-          src="https://images.unsplash.com/photo-1513477967668-2aaf11838bd6?w=800&h=600&q=80&fm=auto&fit=fillD"
-          alt="Image"
-          className="object-cover h-full w-full"
-        />
-      </div>
-
-      {/* Right side with form */}
+      <SignInSignUpLeftImage />
       <div className="w-full md:w-1/2 flex items-center justify-center bg-gray-100 p-10">
         <div className="max-w-md w-full space-y-8">
           <h2 className="text-4xl font-bold mb-6 text-center md:text-left">
@@ -82,7 +61,7 @@ export default function SignInPage() {
                 )}
               />
               <FormField
-                control={form.control}
+                control={control}
                 name="password"
                 render={({ field }) => (
                   <FormItem>
