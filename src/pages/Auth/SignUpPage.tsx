@@ -32,7 +32,7 @@ export default function SignUpPage() {
 
   const onSubmit = async (data: z.infer<typeof signUpFormSchema>) => {
     console.log(data);
-    console.log(import.meta.env.VITE_BACK_URL);
+    console.log(import.meta.env.VITE_API_BASE_URL);
     const result = await api.post("/auth/signup", data);
     console.log("🚀 ~ onSubmit ~ result :", result);
   };
