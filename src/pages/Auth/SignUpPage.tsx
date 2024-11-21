@@ -32,7 +32,10 @@ export default function SignUpPage() {
 
   const onSubmit = async (data: z.infer<typeof signUpFormSchema>) => {
     console.log(data);
-    const result = await api.post("/auth/signup", data);
+    const result = await api.post("/auth/signup", {
+      email: data.email,
+      password: data.password,
+    });
     console.log("🚀 ~ onSubmit ~ result :", result);
   };
 
